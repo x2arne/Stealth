@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get the Script — Stealth X</title>
+<meta name="description" content="Copy the Stealth X loadstring and run it in your executor.">
+<link rel="icon" type="image/png" href="/assets/Arc.png?v=2">
+<link rel="apple-touch-icon" href="/assets/Arc.png?v=2">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="/" aria-label="Stealth X home"><img src="/assets/Arc.png?v=2" alt=""><span>Stealth X</span></a>
+    <div class="topnav-links" aria-label="Primary navigation">
+      <a href="/get-key">Get key</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/docs">Docs</a>
+      <a href="/script" class="active" aria-current="page">Script</a>
+      
+      
+      <a href="https://discord.gg/XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="discord-link">Discord</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <a class="back-link" href="/"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-arrow-left"></use></svg>Back to home</a>
+  <header class="header">
+    <div>
+      <div class="page-kicker"><span class="status-dot"></span> Universal loader</div>
+      <h1>Get the script</h1>
+      <p class="subtitle">Copy the loader once, then use it across every supported game.</p>
+    </div>
+    <div class="header-actions">
+      <a class="btn ghost" href="/script/statistics"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-chart"></use></svg>View stats</a>
+    </div>
+  </header>
+
+  <section class="tiles" aria-label="Stealth X statistics">
+    <div class="tile glass"><div class="counter-icon"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-radio"></use></svg></div><div class="tile-label">Total executions</div><div class="tile-value xl" id="stat-total">—</div></div>
+    <div class="tile glass"><div class="counter-icon"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-gamepad-2"></use></svg></div><div class="tile-label">Supported games</div><div class="tile-value xl" id="stat-games">—</div></div>
+  </section>
+
+  <div class="terminal-wrapper">
+    <section class="terminal glass" aria-label="Stealth X Loader">
+      <div class="terminal-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="terminal-title">Stealth X Loader</span><button type="button" class="btn accent sm" id="copy-btn"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-copy"></use></svg>Copy</button></div>
+      <pre class="terminal-body" tabindex="0" role="region" aria-label="Loadstring"><code id="loadstring"></code></pre>
+    </section>
+  </div>
+
+  <section class="cta-row" aria-label="Script actions">
+    <button type="button" class="btn accent big" id="get-script-btn"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-copy"></use></svg>Copy script</button>
+    <a class="btn ghost big" href="/get-key"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-terminal"></use></svg>Get key</a>
+    <a class="btn ghost big" href="/script/games"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-gamepad-2"></use></svg>Supported games</a>
+    <a class="btn ghost big" href="/script/statistics/#t=live"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-radio"></use></svg>Live stats</a>
+    <a class="btn ghost big" href="https://discord.gg/XXXXXXXXXX" target="_blank" rel="noopener noreferrer"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-message-circle"></use></svg>Discord</a>
+  </section>
+
+  <section class="features-grid" style="margin-top: 48px;" aria-label="Loader guidance">
+    <article class="feature-card glass"><span class="feature-icon"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-terminal"></use></svg></span><h3>Copy the line</h3><p>Use either copy button to place the current loader in your clipboard.</p></article>
+    <article class="feature-card glass"><span class="feature-icon"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-gamepad-2"></use></svg></span><h3>Choose a game</h3><p>Open the catalog for supported experiences and direct Roblox links.</p></article>
+    <article class="feature-card glass"><span class="feature-icon"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-chart"></use></svg></span><h3>Track activity</h3><p>Use live stats to see executions and the latest activity snapshot.</p></article>
+  </section>
+
+  <footer class="footer"><div class="footer-content"><span class="footer-brand">Stealth X</span><a href="/">Home</a><a href="/script/games">Games</a><a href="/script/statistics">Stats</a><a href="https://discord.gg/XXXXXXXXXX" target="_blank" rel="noopener noreferrer">Discord</a></div></footer>
+</main>
+
+<script>
+'use strict';
+const LOADSTRING = 'script_key = "KEY_KAMU"\nloadstring(game:HttpGet("https://stealth-x.com/loader.lua"))()';
+document.getElementById('loadstring').textContent = LOADSTRING;
+const API = '/api';
+const numFmt = new Intl.NumberFormat('en-US');
+fetch(API + '/stats?period=total').then(r => r.ok ? r.json() : Promise.reject()).then(d => { document.getElementById('stat-total').textContent = numFmt.format(d.total); }).catch(() => {});
+fetch(API + '/health').then(r => r.ok ? r.json() : Promise.reject()).then(d => { document.getElementById('stat-games').textContent = numFmt.format(d.supported_games); }).catch(() => {});
+function showToast(message) { const t = document.createElement('div'); t.className = 'toast'; t.textContent = message; document.body.appendChild(t); setTimeout(() => t.remove(), 2000); }
+async function copyLoadstring(btn) {
+  let ok = false;
+  try { await navigator.clipboard.writeText(LOADSTRING); ok = true; } catch (_) {
+    const ta = document.createElement('textarea'); ta.value = LOADSTRING; ta.style.cssText = 'position:fixed;opacity:0;'; document.body.appendChild(ta); ta.select(); try { ok = document.execCommand('copy'); } catch (__) {} ta.remove();
+  }
+  const original = btn.dataset.label || btn.textContent; btn.dataset.label = original; btn.textContent = ok ? 'Copied' : 'Failed'; if (ok) showToast('Loadstring copied to clipboard'); setTimeout(() => { btn.textContent = original; }, 1600);
+}
+document.getElementById('copy-btn').addEventListener('click', e => copyLoadstring(e.currentTarget));
+document.getElementById('get-script-btn').addEventListener('click', e => copyLoadstring(e.currentTarget));
+</script>
+</body>
+</html>

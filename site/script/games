@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supported Games — Stealth X</title>
+<meta name="description" content="Browse every Roblox game supported by Stealth X.">
+<link rel="icon" type="image/png" href="/assets/Arc.png?v=2">
+<link rel="apple-touch-icon" href="/assets/Arc.png?v=2">
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+/* Games the hub only discovered at runtime: present, but visually secondary. */
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="/" aria-label="Stealth X home"><img src="/assets/Arc.png?v=2" alt=""><span>Stealth X</span></a>
+    <div class="topnav-links" aria-label="Primary navigation"><a href="/get-key">Get key</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/docs">Docs</a>
+      <a href="/script" class="active" aria-current="page">Script</a><a href="https://discord.gg/XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="discord-link">Discord</a></div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <a class="back-link" href="/script"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-arrow-left"></use></svg>Back to script</a>
+  <header class="header">
+    <div><div class="page-kicker"><span class="status-dot"></span> Live catalog</div><h1>Supported games</h1><p class="subtitle">Search the catalog, then open any experience directly on Roblox.</p></div>
+    <div class="header-actions"><a class="btn ghost" href="/script/statistics"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-chart"></use></svg>View stats</a></div>
+  </header>
+
+  <div class="games-toolbar"><div class="search-control"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-search"></use></svg><input type="search" id="game-search" class="search-input" placeholder="Search supported games" aria-label="Search supported games"></div><span class="catalog-meta" id="games-count"><svg class="ui-icon" aria-hidden="true"><use href="/assets/icons.svg#icon-gamepad-2"></use></svg><span>Loading catalog</span></span></div>
+  <div class="error-banner" id="error-banner" hidden></div>
+  <div class="games-grid" id="games-grid" aria-live="polite"></div>
+  <div class="empty" id="empty-state" hidden>No games match that search.</div>
+
+  <footer class="footer"><div class="footer-content"><span class="footer-brand">Stealth X</span><a href="/">Home</a><a href="/script">Loader</a><a href="/script/statistics">Stats</a><a href="https://discord.gg/XXXXXXXXXX" target="_blank" rel="noopener noreferrer">Discord</a></div></footer>
+</main>
+<script src="/assets/js/games.js?v=8"></script>
+</body>
+</html>

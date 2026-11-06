@@ -1,0 +1,14 @@
+[
+  { "name": "Steal an Egg", "place_id": 107778070777162, "script": "example" },
+  { "name": "Jump for Pets!", "place_id": 126870639873289, "script": "example" },
+  { "name": "Dungeon Lootr", "place_id": 106484206883664, "script": "example" },
+  { "name": "Da Hood", "place_id": 2788229376, "script": "example" },
+  { "name": "Murder Mystery 2", "place_id": 142823291, "script": "example" },
+  { "name": "Grow a Chicken Fighter", "place_id": 94640181989498, "script": "example" },
+  { "name": "Gakuran", "place_id": 128736949265057, "script": "example" },
+  { "name": "Search For The Needle", "place_id": 108628039999641, "script": "example" },
+  { "name": "Leaf Simulator", "place_id": 100068273119174, "script": "example" },
+  { "name": "RIVALS", "place_id": 17625359962, "script": "example" },
+  { "name": "Ride A Pet", "place_id": 124216119978534, "script": "example" },
+  { "name": "Universal", "place_id": 0, "script": "example" }
+]

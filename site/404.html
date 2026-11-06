@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 — Stealth X</title>
+<link rel="icon" type="image/png" href="/assets/Arc.png">
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --page:#080808; --text:#f5f5f5; --muted:#8a8a8a;
+    --line:rgba(255,255,255,.09); --accent:#e9e9e9;
+    --font:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  @font-face{
+    font-family:"Inter"; src:url("/assets/fonts/inter-var.woff2") format("woff2");
+    font-weight:100 900; font-style:normal; font-display:swap;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--page); color:var(--text); font-family:var(--font);
+    display:grid; place-items:center; padding:24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* Same bar as the landing page, so an error never looks like a different site. */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:10; height:64px;
+    border-bottom:1px solid rgba(255,255,255,.045);
+    background:rgba(11,11,12,.94);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    width:min(1200px,100% - 40px); height:100%; margin:0 auto;
+  }
+  .nav-logo{display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border:0; padding:0}
+  .nav-logo img{display:block; width:38px; height:38px}
+  .nav-actions{display:flex; align-items:center; gap:.5rem}
+  .nav-actions a{
+    display:inline-flex; align-items:center; justify-content:center; gap:.48rem;
+    min-height:34px; padding:.45rem .7rem; border:2px solid rgba(255,255,255,.09);
+    border-radius:6px; background:#111113; color:#adadad;
+    font-size:.7rem; font-weight:700; letter-spacing:-.01em; line-height:1;
+    white-space:nowrap; transform:none;
+  }
+  .nav-actions a:hover{border-color:rgba(255,255,255,.18); background:#171719; color:#eee; transform:none}
+  .nav-actions a.solid{background:#111113; color:#adadad; border-color:rgba(255,255,255,.09)}
+  @media (max-width:620px){
+    .nav-inner{width:calc(100% - 24px)}
+    .nav-actions a{padding:.45rem .55rem}
+    .nav-actions a span{display:none}
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none;
+    background:
+      radial-gradient(60% 45% at 50% 0%, rgba(255,255,255,.06), transparent 70%),
+      linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px) 0 0/100% 44px;
+  }
+  .wrap{position:relative; text-align:center; max-width:440px}
+  .mark{width:64px; height:64px; margin:0 auto 26px; display:block; opacity:.95}
+  .code{
+    font-size:82px; font-weight:680; letter-spacing:-.04em; line-height:1;
+    background:linear-gradient(180deg,#fff,#9a9a9a); -webkit-background-clip:text;
+    background-clip:text; color:transparent;
+  }
+  h1{margin:16px 0 10px; font-size:19px; font-weight:620; letter-spacing:-.01em}
+  p{margin:0 0 28px; color:var(--muted); font-size:14.5px; line-height:1.6}
+  .actions{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+  .actions a{
+    display:inline-flex; align-items:center; justify-content:center;
+    text-decoration:none; font-size:.74rem; font-weight:700; letter-spacing:-.01em;
+    min-height:36px; padding:.52rem .82rem;
+    border-radius:6px; border:2px solid rgba(255,255,255,.09);
+    background:#111113; color:#adadad;
+    transition:border-color .16s ease, background .16s ease, color .16s ease;
+  }
+  .actions a:hover{border-color:rgba(255,255,255,.18); background:#171719; color:#eeeeee}
+  .actions a.solid{background:#f0f0f0; color:#0d0d0d; border-color:transparent}
+  .actions a.solid:hover{background:#fff; color:#0d0d0d}
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/" aria-label="Stealth X home"><img src="/arc-logo-white.png" alt=""></a>
+      <nav class="nav-actions" aria-label="Stealth X">
+        <a href="/script"><span>Loader</span></a>
+        <a href="/script/statistics"><span>Stats</span></a>
+        
+        <a href="https://discord.gg/XXXXXXXXXX" target="_blank" rel="noopener noreferrer"><span>Discord</span></a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <img class="mark" src="/arc-logo-white.png" alt="" aria-hidden="true">
+    <div class="code">404</div>
+    <h1>This page doesn't exist</h1>
+    <p>The link may be old, or the page may have moved. Everything else is still here.</p>
+    <div class="actions">
+      <a class="solid" href="/">Back to Stealth X</a>
+      <a href="/script">Loader</a>
+      
+      <a href="/script/statistics">Live stats</a>
+    </div>
+  </main>
+</body>
+</html>
