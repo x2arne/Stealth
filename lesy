@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lesy</title>
+<meta name="description" content="lesy's profile.">
+<link rel="icon" type="image/png" href="/assets/Arc.png?v=2">
+<meta property="og:title" content="lesy">
+<meta property="og:description" content="One loader. Every game. Join the community.">
+<meta property="og:image" content="/assets/profile/pfp.jpg">
+<meta property="og:type" content="profile">
+<script>if(location.protocol==='http:'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1'){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}</script>
+<style>
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --text: #f2f1ec;
+  --text-2: #b8b6ae;
+  --muted: #85837b;
+  --accent: #e9e9e9;
+  --border: rgba(255, 255, 255, 0.08);
+  --panel: rgba(10, 11, 14, 0.66);
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #06070a;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Background ───────────────────────────────────────────── */
+.bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: #06070a; }
+.bg-image, .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; }
+.bg-image.show, .bg-video.show { opacity: 1; }
+.bg::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(6,7,10,0.10) 0%, rgba(6,7,10,0.72) 78%, rgba(6,7,10,0.92) 100%),
+    linear-gradient(180deg, rgba(6,7,10,0.35) 0%, rgba(6,7,10,0.55) 100%);
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+main { position: relative; z-index: 1; flex: 1; display: flex; align-items: center; justify-content: center; padding: 32px 16px 24px; }
+
+.card {
+  width: min(440px, 100%);
+  position: relative;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  backdrop-filter: blur(26px) saturate(1.15);
+  -webkit-backdrop-filter: blur(26px) saturate(1.15);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  padding: 0;
+  text-align: center;
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.banner { position: relative; height: 128px; background: #0b0d10; }
+.banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.banner::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(10, 11, 15, 0.9));
+}
+.body { padding: 12px 34px 30px; position: relative; z-index: 1; }
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14%;
+  right: 14%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+}
+.card > * { position: relative; z-index: 1; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
+}
+
+/* Avatar — conic ring + status dot, overlaps the banner */
+.avatar-wrap {
+  position: relative;
+  width: 112px; height: 112px;
+  margin: -56px auto 0;
+  z-index: 2;
+}
+.avatar {
+  width: 100%; height: 100%;
+  border-radius: 26px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.5);
+  display: block;
+  transition: transform 0.25s ease;
+}
+.avatar:hover { transform: scale(1.03); }
+.av-status {
+  position: absolute; right: 0; bottom: 0;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #6bcb77;
+  border: 3px solid #0f1116;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.avatar-wrap.dnd .av-status { background: #e5b86d; }
+.avatar-wrap.offline .av-status { background: #7b7b7b; }
+
+.name-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.name { font-size: 29px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; text-shadow: 0 2px 18px rgba(255,255,255,0.08); }
+.verified {
+  width: 22px; height: 22px; flex: none;
+  border-radius: 50%; display: grid; place-items: center;
+  background: #3b82f6;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.13), 0 4px 14px rgba(59, 130, 246, 0.28);
+}
+.verified svg { width: 13px; height: 13px; display: block; }
+
+.handle {
+  margin-top: 5px; font-size: 14px; color: var(--muted);
+  display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+  border: none; background: none; font-family: inherit;
+  transition: color 0.2s;
+}
+.handle:hover { color: var(--text-2); }
+.handle svg { width: 13px; height: 13px; opacity: 0.65; }
+.copy-ok { color: #6bcb77 !important; }
+
+/* Status */
+.status {
+  margin-top: 12px; display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12.5px; color: var(--text-2);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 999px; padding: 4px 12px;
+}
+.status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #6bcb77; position: relative;
+}
+.status.dnd { color: #e5b86d; }
+.status.dnd .status-dot { background: #e5b86d; }
+.status.offline { color: #929292; }
+.status.offline .status-dot { background: #7b7b7b; }
+.status-dot::after {
+  content: ""; position: absolute; inset: -4px; border-radius: 50%;
+  border: 1px solid rgba(107, 203, 119, 0.5);
+  animation: pulse 2s ease-out infinite;
+}
+@keyframes pulse {
+  0%   { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; }
+.tag {
+  font-size: 12px; font-weight: 600; color: var(--text-2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 5px 12px; border-radius: 999px;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.tag:hover { background: rgba(255, 255, 255, 0.10); border-color: rgba(255, 255, 255, 0.28); transform: translateY(-1px); }
+
+/* Bio */
+.bio {
+  margin: 20px auto 0; max-width: 330px;
+  color: var(--text-2); font-size: 13.5px; line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* Links */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+}
+.links::before {
+  content: "Connect with me";
+  display: block;
+  text-align: left;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 2px 2px;
+}
+.link {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none; color: var(--text);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 12px 15px;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  animation: rise 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.link:hover {
+  transform: translateY(-1.5px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--brand, var(--accent));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.link-icon {
+  width: 38px; height: 38px; flex: none; border-radius: 10px;
+  display: grid; place-items: center;
+  background: var(--brand-bg, rgba(255, 255, 255, 0.07));
+  color: var(--brand, #fff);
+  transition: transform 0.18s ease;
+}
+.link:hover .link-icon { transform: scale(1.07); }
+.link-icon svg { width: 19px; height: 19px; fill: currentColor; }
+.link-icon img { width: 27px; height: 27px; object-fit: contain; display: block; }
+.link[data-icon="roblox"] .link-icon { width: 42px; height: 42px; }
+.link[data-icon="roblox"] .link-icon img { width: 30px; height: 30px; }
+.link-body { flex: 1; text-align: left; min-width: 0; }
+.link-label { font-size: 14.5px; font-weight: 700; }
+.link-note { font-size: 12px; color: var(--muted); margin-top: 1px; }
+.link-arrow { color: var(--muted); flex: none; transition: transform 0.18s ease, color 0.18s ease; }
+.link-arrow svg { width: 15px; height: 15px; display: block; }
+.link:hover .link-arrow { transform: translateX(3px); color: var(--text); }
+
+.link[data-icon="discord"]   { --brand: #8b94ff; --brand-bg: rgba(88, 101, 242, 0.18); background: rgba(88, 101, 242, 0.055); }
+.link[data-icon="discord"] .link-label::after { content: "  •  MAIN"; color: #8b94ff; font-size: 9px; letter-spacing: 0.1em; vertical-align: 1px; }
+.link[data-icon="yt"]        { --brand: #ff4d4d; --brand-bg: rgba(255, 0, 0, 0.14); }
+.link[data-icon="tiktok"]    { --brand: #e8e6e1; --brand-bg: rgba(255, 255, 255, 0.10); }
+.link[data-icon="telegram"]  { --brand: #4db8e8; --brand-bg: rgba(0, 136, 204, 0.16); }
+.link[data-icon="x"]         { --brand: #e8e6e1; --brand-bg: rgba(255, 255, 255, 0.10); }
+.link[data-icon="instagram"] { --brand: #ff6b9d; --brand-bg: rgba(225, 48, 108, 0.16); }
+.link[data-icon="github"]    { --brand: #e8e6e1; --brand-bg: rgba(255, 255, 255, 0.10); }
+.link[data-icon="roblox"]    { --brand: #f0f0f0; --brand-bg: rgba(255, 255, 255, 0.10); }
+
+/* Music */
+.music-btn {
+  position: fixed; top: 18px; right: 18px; z-index: 5;
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(10, 11, 14, 0.6);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  color: var(--text-2); cursor: pointer;
+  display: none; place-items: center;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.music-btn:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.2); transform: scale(1.06); }
+.music-btn.playing { color: var(--accent); border-color: rgba(255, 255, 255, 0.5); }
+.music-btn svg { width: 19px; height: 19px; }
+.music-btn .disc { display: none; animation: spin 2.6s linear infinite; }
+.music-btn.playing .disc { display: block; }
+.music-btn.playing .note { display: none; }
+.music-btn .note { display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 480px) {
+  .body { padding: 12px 24px 26px; }
+  .name { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <img class="bg-image" id="bgImage" alt="">
+  <video class="bg-video" id="bgVideo" muted loop playsinline></video>
+</div>
+
+<button class="music-btn" id="musicBtn" aria-label="Toggle background music" title="Background music">
+  <svg class="note" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18.5a3.5 3.5 0 1 1-2-3.16V5.4a1 1 0 0 1 .76-.97l9-2.25A1 1 0 0 1 18 3.15v11.19a3.5 3.5 0 1 1-2-3.16V8.02l-7 1.75v8.73Z"/></svg>
+  <svg class="disc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/><path d="M12 3a9 9 0 0 1 9 9" stroke-linecap="round"/></svg>
+</button>
+
+<main>
+  <div class="card">
+    <div class="banner"><img id="bannerImg" alt=""></div>
+    <div class="avatar-wrap" id="avatarWrap"><img class="avatar" id="avatar" alt="profile picture"><span class="av-status"></span></div>
+    <div class="body">
+      <div class="eyebrow">Profile</div>
+
+      <div class="name-row">
+        <h1 class="name" id="name"></h1>
+        <span class="verified" title="Verified Stealth X profile" aria-label="Verified Stealth X profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 12.5 3.5 3.5 7.5-8"/></svg>
+        </span>
+      </div>
+      <button class="handle" id="handle" title="Copy handle"></button>
+
+      <div class="status"><span class="status-dot"></span><span id="status"></span></div>
+
+      <div class="tags" id="tags"></div>
+      <p class="bio" id="bio"></p>
+
+      <div class="links" id="links"></div>
+    </div>
+  </div>
+</main>
+
+<audio id="audio" loop preload="none"></audio>
+
+<script>
+const PROFILE = {
+  avatar: "/assets/profile/pfp.jpg",
+  name: "lesy",
+  handle: "lesy",
+  status: "Online",
+  tags: ["Script Hub Owner", "Developer", "12 Games"],
+  bio: "I run Stealth X — one loader, every game.\n\nDiscord updates, new scripts and game support\ndrop constantly. Copy the loader and join in.",
+  music: "/assets/bgmusic.mp3",
+  bgImage: "/assets/profile/background.jpg",
+  bgVideo: "",
+  links: [
+    { label: "Discord", url: "https://discord.gg/8VxyzMMjfh", note: "@9xvxxxxxx · join the community", icon: "discord" },
+    { label: "Roblox", url: "https://www.roblox.com/de/users/2401825836/profile", note: "View my Roblox profile", icon: "roblox" },
+  ],
+};
+(function () {
+  "use strict";
+
+  document.getElementById("avatar").src = PROFILE.avatar;
+  document.getElementById("avatar").onerror = function () { this.src = "/assets/Arc.png"; };
+  document.getElementById("name").textContent = PROFILE.name;
+  document.getElementById("status").textContent = PROFILE.status || "Online";
+  if (PROFILE.status === "Do not disturb") { document.querySelector(".status").classList.add("dnd"); document.getElementById("avatarWrap").classList.add("dnd"); }
+  if (PROFILE.status === "Offline") { document.querySelector(".status").classList.add("offline"); document.getElementById("avatarWrap").classList.add("offline"); }
+
+  var handle = document.getElementById("handle");
+  function renderHandle() {
+    handle.innerHTML = "@" + PROFILE.handle +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  }
+  renderHandle();
+  handle.addEventListener("click", function () {
+    var done = function () {
+      handle.classList.add("copy-ok");
+      handle.textContent = "Copied @" + PROFILE.handle + "!";
+      setTimeout(function () { handle.classList.remove("copy-ok"); renderHandle(); }, 1400);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(PROFILE.handle).then(done).catch(function () { fallbackCopy(PROFILE.handle, done); });
+    } else { fallbackCopy(PROFILE.handle, done); }
+  });
+
+  function fallbackCopy(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  var tags = document.getElementById("tags");
+  (PROFILE.tags || []).forEach(function (t) {
+    var el = document.createElement("span");
+    el.className = "tag";
+    el.textContent = t;
+    tags.appendChild(el);
+  });
+
+  document.getElementById("bio").textContent = PROFILE.bio || "";
+
+  var icons = {
+    discord: '<path d="M20.317 4.37a19.8 19.8 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.291.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>',
+    yt: '<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>',
+    tiktok: '<path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>',
+    telegram: '<path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>',
+    x: '<path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>',
+    instagram: '<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>',
+    github: '<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>',
+    roblox: '<path d="M6.25 0 24 6.25 17.75 24 0 17.75 6.25 0Zm2.62 5.24-3.63 10.28 10.28 3.63 3.63-10.28L8.87 5.24Z"/>',
+  };
+
+  var links = document.getElementById("links");
+  (PROFILE.links || []).forEach(function (l, i) {
+    var a = document.createElement("a");
+    a.className = "link";
+    a.href = l.url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.setAttribute("data-icon", l.icon);
+    a.style.animationDelay = (0.12 + i * 0.05) + "s";
+    var iconMarkup = l.icon === "roblox"
+      ? '<img src="/assets/profile/roblox.png" alt="">'
+      : '<svg viewBox="0 0 24 24">' + (icons[l.icon] || icons.discord) + '</svg>';
+    a.innerHTML =
+      '<span class="link-icon">' + iconMarkup + '</span>' +
+      '<span class="link-body"><div class="link-label"></div>' +
+      (l.note ? '<div class="link-note"></div>' : "") +
+      '</span>' +
+      '<span class="link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>';
+    a.querySelector(".link-label").textContent = l.label;
+    if (l.note) a.querySelector(".link-note").textContent = l.note;
+    links.appendChild(a);
+  });
+
+  /* ── Background layers ─────────────────────────── */
+  if (PROFILE.bgImage) {
+    var img = document.getElementById("bgImage");
+    img.src = PROFILE.bgImage;
+    img.onload = function () { img.classList.add("show"); };
+    var banner = document.getElementById("bannerImg");
+    banner.src = PROFILE.bgImage;
+  }
+  if (PROFILE.bgVideo) {
+    var vid = document.getElementById("bgVideo");
+    vid.src = PROFILE.bgVideo;
+    vid.play().then(function () { vid.classList.add("show"); }).catch(function () {});
+  }
+
+  /* ── Background music ──────────────────────────── */
+  var audio = document.getElementById("audio");
+  var btn = document.getElementById("musicBtn");
+  var started = false;
+  function tryPlay() {
+    if (!PROFILE.music || started) return;
+    started = true;
+    audio.play().then(function () { btn.classList.add("playing"); }).catch(function () {});
+  }
+  if (PROFILE.music) {
+    audio.src = PROFILE.music;
+    audio.volume = 0.35;
+    btn.style.display = "grid";
+    ["pointerdown", "keydown", "touchstart"].forEach(function (ev) {
+      window.addEventListener(ev, tryPlay, { once: true, passive: true });
+    });
+    btn.addEventListener("click", function () {
+      if (audio.paused) {
+        audio.play().then(function () { btn.classList.add("playing"); }).catch(function () {});
+      } else {
+        audio.pause();
+        btn.classList.remove("playing");
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

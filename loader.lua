@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xulfo/OxideUiLibary2/main/ScriptLoader.lua"))()

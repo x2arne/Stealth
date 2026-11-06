@@ -1,8 +1,0 @@
-{
-  "name": "stealth-x",
-  "version": "2.0.0",
-  "private": true,
-  "description": "Stealth X script hub: website + key system + stats",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=18" }
-}

@@ -1,0 +1,267 @@
+/about
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/checkcaller
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/clonefunction
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/getfunctionhash
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/hookfunction
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/hookmetamethod
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/iscclosure
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/isexecutorclosure
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/islclosure
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/loadstring
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/newcclosure
+  Content-Type: text/html; charset=utf-8
+
+/docs/closures/restorefunction
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/getconstant
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/getconstants
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/getproto
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/getprotos
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/getstack
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/getupvalue
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/getupvalues
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/setconstant
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/setstack
+  Content-Type: text/html; charset=utf-8
+
+/docs/debug/setupvalue
+  Content-Type: text/html; charset=utf-8
+
+/docs/drawing/cleardrawcache
+  Content-Type: text/html; charset=utf-8
+
+/docs/drawing/getrenderproperty
+  Content-Type: text/html; charset=utf-8
+
+/docs/drawing/isrenderobj
+  Content-Type: text/html; charset=utf-8
+
+/docs/drawing/setrenderproperty
+  Content-Type: text/html; charset=utf-8
+
+/docs/encoding/base64decode
+  Content-Type: text/html; charset=utf-8
+
+/docs/encoding/base64encode
+  Content-Type: text/html; charset=utf-8
+
+/docs/encoding/lz4compress
+  Content-Type: text/html; charset=utf-8
+
+/docs/encoding/lz4decompress
+  Content-Type: text/html; charset=utf-8
+
+/docs/environment/filtergc
+  Content-Type: text/html; charset=utf-8
+
+/docs/environment/function-filter-options
+  Content-Type: text/html; charset=utf-8
+
+/docs/environment/getgc
+  Content-Type: text/html; charset=utf-8
+
+/docs/environment/getgenv
+  Content-Type: text/html; charset=utf-8
+
+/docs/environment/getreg
+  Content-Type: text/html; charset=utf-8
+
+/docs/environment/getrenv
+  Content-Type: text/html; charset=utf-8
+
+/docs/environment/table-filter-options
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/appendfile
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/delfile
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/delfolder
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/getcustomasset
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/isfile
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/isfolder
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/listfiles
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/loadfile
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/makefolder
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/readfile
+  Content-Type: text/html; charset=utf-8
+
+/docs/filesystem/writefile
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/cloneref
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/compareinstances
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/fireclickdetector
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/fireproximityprompt
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/firetouchinterest
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/getcallbackvalue
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/gethui
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/getinstances
+  Content-Type: text/html; charset=utf-8
+
+/docs/instances/getnilinstances
+  Content-Type: text/html; charset=utf-8
+
+/docs/metatable/getnamecallmethod
+  Content-Type: text/html; charset=utf-8
+
+/docs/metatable/getrawmetatable
+  Content-Type: text/html; charset=utf-8
+
+/docs/metatable/isreadonly
+  Content-Type: text/html; charset=utf-8
+
+/docs/metatable/setrawmetatable
+  Content-Type: text/html; charset=utf-8
+
+/docs/metatable/setreadonly
+  Content-Type: text/html; charset=utf-8
+
+/docs/miscellaneous/identifyexecutor
+  Content-Type: text/html; charset=utf-8
+
+/docs/miscellaneous/request
+  Content-Type: text/html; charset=utf-8
+
+/docs/reflection/gethiddenproperty
+  Content-Type: text/html; charset=utf-8
+
+/docs/reflection/getthreadidentity
+  Content-Type: text/html; charset=utf-8
+
+/docs/reflection/isscriptable
+  Content-Type: text/html; charset=utf-8
+
+/docs/reflection/sethiddenproperty
+  Content-Type: text/html; charset=utf-8
+
+/docs/reflection/setscriptable
+  Content-Type: text/html; charset=utf-8
+
+/docs/reflection/setthreadidentity
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getcallingscript
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getloadedmodules
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getrunningscripts
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getscriptbytecode
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getscriptclosure
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getscriptfromthread
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getscripthash
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getscripts
+  Content-Type: text/html; charset=utf-8
+
+/docs/scripts/getsenv
+  Content-Type: text/html; charset=utf-8
+
+/docs/signals/connection
+  Content-Type: text/html; charset=utf-8
+
+/docs/signals/firesignal
+  Content-Type: text/html; charset=utf-8
+
+/docs/signals/getconnections
+  Content-Type: text/html; charset=utf-8
+
+/docs/signals/replicatesignal
+  Content-Type: text/html; charset=utf-8
+
+/docs/websocket
+  Content-Type: text/html; charset=utf-8
+
+/lesy
+  Content-Type: text/html; charset=utf-8
+
+/privacy
+  Content-Type: text/html; charset=utf-8
+
+/script/games
+  Content-Type: text/html; charset=utf-8
+
+/script/statistics
+  Content-Type: text/html; charset=utf-8
+
+/terms
+  Content-Type: text/html; charset=utf-8
+
